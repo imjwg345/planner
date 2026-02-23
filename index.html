@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Planner App</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="app__header">
+        <h1>Planner</h1>
+        <p class="subtitle">Plan your day with quick tasks and priorities.</p>
+      </header>
+
+      <section class="card" aria-label="Add task">
+        <form id="task-form" class="task-form">
+          <label>
+            Task
+            <input id="task-title" name="title" type="text" placeholder="e.g. Prepare sprint demo" required />
+          </label>
+
+          <label>
+            Due date
+            <input id="task-date" name="dueDate" type="date" />
+          </label>
+
+          <label>
+            Priority
+            <select id="task-priority" name="priority">
+              <option value="high">High</option>
+              <option value="medium" selected>Medium</option>
+              <option value="low">Low</option>
+            </select>
+          </label>
+
+          <button type="submit">Add task</button>
+        </form>
+      </section>
+
+      <section class="card" aria-label="Task filters">
+        <div class="toolbar">
+          <div>
+            <button class="filter-btn active" data-filter="all" type="button">All</button>
+            <button class="filter-btn" data-filter="high" type="button">High</button>
+            <button class="filter-btn" data-filter="medium" type="button">Medium</button>
+            <button class="filter-btn" data-filter="low" type="button">Low</button>
+          </div>
+          <button id="clear-completed" class="danger" type="button">Clear completed</button>
+        </div>
+      </section>
+
+      <section class="card" aria-label="Tasks list">
+        <ul id="task-list" class="task-list"></ul>
+        <p id="empty-state" class="empty-state">No tasks yet. Add your first task above.</p>
+      </section>
+    </main>
+
+    <template id="task-item-template">
+      <li class="task-item">
+        <label class="task-item__checkbox">
+          <input type="checkbox" />
+          <span></span>
+        </label>
+        <div class="task-item__meta">
+          <p class="task-item__title"></p>
+          <p class="task-item__details"></p>
+        </div>
+        <button class="delete-btn" type="button" aria-label="Delete task">✕</button>
+      </li>
+    </template>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
